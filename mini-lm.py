@@ -200,7 +200,7 @@ def download_model():
 # Define the Gradio interface
 demo = gr.Blocks()
 with demo:
-    gr.Markdown("# Mini Language Model Trainer")
+    gr.Markdown("# Mini Language Model")
     # Tab for training the model
     with gr.Tab("Train Model"):
         pdf_input = gr.File(label="Upload PDF")
