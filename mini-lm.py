@@ -3,7 +3,6 @@ import PyPDF2
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-import time
 import os
 
 # Extract text from the PDF file
@@ -221,4 +220,4 @@ with demo:
         generate_button.click(fn=gradio_generate, inputs=[start_text_input, num_words_input], outputs=generate_output)
 
 # Launch the Gradio app
-demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
+demo.launch()
