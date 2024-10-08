@@ -201,10 +201,7 @@ def download_model():
 # Define the Gradio interface
 demo = gr.Blocks()
 with demo:
-    gr.Markdown("""
-    # Mini Language Model Trainer
-    This application lets you train a simple language model using text extracted from a PDF file. The trained model can then generate text based on user input. It is ideal for experimenting with basic natural language processing and text generation tasks.
-    """)
+    gr.Markdown("# Mini Language Model Trainer")
     # Tab for training the model
     with gr.Tab("Train Model"):
         pdf_input = gr.File(label="Upload PDF")
@@ -224,4 +221,4 @@ with demo:
         generate_button.click(fn=gradio_generate, inputs=[start_text_input, num_words_input], outputs=generate_output)
 
 # Launch the Gradio app
-demo.launch()
+demo.launch(server_name="0.0.0.0", server_port=int(os.environ.get("PORT", 8080)))
