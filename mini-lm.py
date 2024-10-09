@@ -193,9 +193,9 @@ def gradio_generate(start_text, num_words):
 # Function to download the trained model
 def download_model():
     if hasattr(gradio_train, 'model_path') and os.path.exists(gradio_train.model_path):
-        return gr.File.update(value=gradio_train.model_path, visible=True)
+        return gradio_train.model_path
     else:
-        return "Model not found. Please train the model first."
+        return None
 
 # Define the Gradio interface
 demo = gr.Blocks()
@@ -209,7 +209,8 @@ with demo:
         train_button.click(fn=gradio_train, inputs=pdf_input, outputs=train_output)
         # Button to download the trained model
         download_button = gr.Button("Download Trained Model")
-        download_file = gr.File(visible=False)
+        download_file = gr.File(label="Trained Model File", visible=False)
+        # Actualiza el archivo descargable cuando se haga clic
         download_button.click(fn=download_model, inputs=None, outputs=download_file)
     # Tab for generating text using the trained model
     with gr.Tab("Generate Text"):
