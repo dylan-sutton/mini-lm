@@ -220,5 +220,5 @@ with demo:
         generate_button.click(fn=gradio_generate, inputs=[start_text_input, num_words_input], outputs=generate_output)
 
 # Launch the Gradio app
-port = int(os.getenv("PORT", 5000))
+port = int(os.getenv("PORT", 10000))
 demo.launch(server_name="0.0.0.0", server_port=port)
